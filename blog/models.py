@@ -1,3 +1,4 @@
+from django.conf import Settings, settings
 from django.db import models
 from django.utils import timezone
 # Create your models here.
@@ -17,6 +18,11 @@ class Post(models.Model):
         max_length=2,
         choices=Status,
         default=Status.DRAFT
+    )
+    auther = models.ForeignKey(
+        Settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='blog_posts'
     )
 
     class Meta:
