@@ -10,7 +10,7 @@ def post_list(request):
 
     return render(
         request,
-        'blog/post/posts.html',
+        'post/list.html',
         {'posts': posts}
     )
 
@@ -21,6 +21,6 @@ def post_detail(request, id):
         raise Http404('No post found')
     return render(
         request,
-        'blog/post/detail.html',
+        'post/detail.html',
         {'post': post}
     )
