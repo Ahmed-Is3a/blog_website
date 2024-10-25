@@ -32,8 +32,8 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-
-    published = PublishedManager()
+    objects = models.Manager()  # defualt manager
+    published = PublishedManager()  # custom manager
 
     class Meta:
         ordering = ['-publish']
