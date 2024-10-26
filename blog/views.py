@@ -6,6 +6,14 @@ from blog.models import Post
 
 # Create your views here.
 
+class PostListView(ListView):
+    # model = Post  # get all posts
+    queryset = Post.published.all()  # get published posts 
+    context_object_name = 'posts'
+    paginate_by = 3
+    template_name = 'post/list.html'
+
+
 def post_list(request):
     posts = Post.published.all()
 
