@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class PublishedManager(models.Manager):
@@ -35,6 +36,7 @@ class Post(models.Model):
     objects = models.Manager()  # defualt manager
     published = PublishedManager()  # custom manager
 
+
     class Meta:
         ordering = ['-publish']
         indexes = [
@@ -51,6 +53,7 @@ class Post(models.Model):
             self.publish.day,
             self.slug
         ])
+    tags = TaggableManager()
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
